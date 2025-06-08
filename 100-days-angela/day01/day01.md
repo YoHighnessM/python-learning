@@ -1,0 +1,1 @@
+- Learned about variables, string concatinaion, variable naming and about inputs
