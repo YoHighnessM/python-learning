@@ -92,6 +92,9 @@ while displayLetter != randomWord:
 
     userLetter = input("\nGuess a letter: ").lower()
 
+    if userLetter in correct_letters:
+        print(f"You've already guessed the letter {userLetter}")
+
     if userLetter not in randomWord:
         lives -= 1
         print(f"***************{lives}/6 LIVES LEFT***************")
