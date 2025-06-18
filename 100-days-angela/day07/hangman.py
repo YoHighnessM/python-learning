@@ -97,11 +97,13 @@ while displayLetter != randomWord:
 
     if userLetter not in randomWord:
         lives -= 1
-        print(f"***************{lives}/6 LIVES LEFT***************")
+        print(f"*************** {lives}/6 LIVES LEFT ***************")
 
         if lives == 0:
             print(stages[lives])
-            print("***************You Lost***************")
+            print(
+                f"*************** You Lost!!! The word was '{randomWord}' ***************"
+            )
             break
 
     for letter in randomWord:
@@ -118,6 +120,6 @@ while displayLetter != randomWord:
         print(f"You guessed {userLetter}, which is not in the word. You'll lose a live")
 
     if "_" not in displayLetter:
-        print("***************You Won***************")
+        print("*************** You Won ***************")
 
     print(stages[lives])
