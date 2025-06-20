@@ -28,53 +28,30 @@ alphabet = [
 ]
 
 user_choice = input("Type 'encode' to encrypt, type 'decode' to decrypt: >>> ")
+user_word = input("Type your message: >>> ")
+shift_num = int(input("Type the shift number: >>> "))
 
 
-def ceasar():
+def ceasar(original_text, shift_amount, encode_decode):
 
-    if user_choice == "encode":
+    user_word_list = list(original_text)
+    newWord = ""
 
-        user_word = input("Type your message: >>> ")
-        shift_num = int(input("Type the shift number: >>> "))
+    for letter in user_word_list:
+        letterIndex = alphabet.index(letter)
 
-        def encrypt(original_text, shift_amount):
+        if encode_decode == "encode":
+            newLetterIndex = letterIndex + shift_amount
+        else:
+            newLetterIndex = letterIndex - shift_amount
 
-            user_word_list = list(original_text)
-            newWord = ""
+        if newLetterIndex > 25:
+            newRoundIndex = newLetterIndex % len(alphabet)
+            newWord += alphabet[newRoundIndex]
+        else:
+            newWord += alphabet[newLetterIndex]
 
-            for letter in user_word_list:
-                letterIndex = alphabet.index(letter)
-                newLetterIndex = letterIndex + shift_amount
-
-                if newLetterIndex > 25:
-                    newRoundIndex = newLetterIndex % len(alphabet)
-                    newWord += alphabet[newRoundIndex]
-                else:
-                    newWord += alphabet[newLetterIndex]
-
-            print(f"Here is the encoded text: {newWord}")
-
-        encrypt(original_text=user_word, shift_amount=shift_num)
-
-    elif user_choice == "decode":
-
-        encryptedWord = input("Type the encrypted word: >>> ")
-        encryptShiftAmount = int(input("Type the shift amount used to encrypt: >>> "))
-
-        def decrypt(encryptWord, encryptShift):
-            encryptedWordList = list(encryptWord)
-            newWord = ""
-
-            for letter in encryptedWordList:
-                letterIndex = alphabet.index(letter)
-                newLetterIndex = letterIndex - encryptShift
-                newWord += alphabet[newLetterIndex]
-
-            print(f"Here is the decoded text: {newWord}")
-
-        decrypt(encryptWord=encryptedWord, encryptShift=encryptShiftAmount)
-    else:
-        print("Insert the correct text")
+    print(f"Here is the {encode_decode}d text: {newWord}")
 
 
-ceasar()
+ceasar(original_text=user_word, shift_amount=shift_num, encode_decode=user_choice)
