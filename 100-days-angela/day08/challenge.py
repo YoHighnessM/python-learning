@@ -1,37 +1,3 @@
-alphabet = [
-    "a",
-    "b",
-    "c",
-    "d",
-    "e",
-    "f",
-    "g",
-    "h",
-    "i",
-    "j",
-    "k",
-    "l",
-    "m",
-    "n",
-    "o",
-    "p",
-    "q",
-    "r",
-    "s",
-    "t",
-    "u",
-    "v",
-    "w",
-    "x",
-    "y",
-    "z",
-]
-
-user_choice = input("Type 'encode' to encrypt, type 'decode' to decrypt: >>> ")
-user_word = input("Type your message: >>> ")
-shift_num = int(input("Type the shift number: >>> "))
-
-
 def ceasar(original_text, shift_amount, encode_decode):
 
     user_word_list = list(original_text)
@@ -54,4 +20,46 @@ def ceasar(original_text, shift_amount, encode_decode):
     print(f"Here is the {encode_decode}d text: {newWord}")
 
 
-ceasar(original_text=user_word, shift_amount=shift_num, encode_decode=user_choice)
+continue_game = True
+
+while continue_game:
+    alphabet = [
+        "a",
+        "b",
+        "c",
+        "d",
+        "e",
+        "f",
+        "g",
+        "h",
+        "i",
+        "j",
+        "k",
+        "l",
+        "m",
+        "n",
+        "o",
+        "p",
+        "q",
+        "r",
+        "s",
+        "t",
+        "u",
+        "v",
+        "w",
+        "x",
+        "y",
+        "z",
+    ]
+
+    user_choice = input("Type 'encode' to encrypt, type 'decode' to decrypt: >>> ")
+    user_word = input("Type your message: >>> ")
+    shift_num = int(input("Type the shift number: >>> "))
+
+    ceasar(original_text=user_word, shift_amount=shift_num, encode_decode=user_choice)
+
+    ask = input("Continue? Yes or No: >>> ")
+
+    if ask == "no":
+        continue_game = False
+        print("Bye")
